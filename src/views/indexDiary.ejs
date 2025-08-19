@@ -1,12 +1,35 @@
 <%- include('./includes/head')%>
     <div class="navbar">
         <div class="logo">Diary</div>
-        <a href="/diary/profile" class="profile-icon" title="Perfil">
+            <a href="/diary/profile" class="profile-icon" title="Perfil">
         <i class="fas fa-user"></i>
         </a>
     </div>
 
-    <div class="cont-list">
-        
+    <div class="container">
+        <div class="card-list">
+            <h2>Seus Contatos</h2>
+            <div class="cont-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% contacts.forEach(contact => { %>
+                            <tr>
+                                <td><%= contact.name %></td>
+                                <td><%= contact.phone %></td>
+                                <td><%= contact.email %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <a href="/diary/contact">+ Criar Contato</a>
+        </div>
     </div>
 <%- include('./includes/footer')%>

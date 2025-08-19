@@ -1,13 +1,13 @@
 <%- include('./includes/head')%>
     <div class="navbar">
         <div class="logo">Diary</div>
-        <a href="/diary/profile" class="profile-icon" title="Perfil">
+            <a href="/diary/profile" class="profile-icon" title="Perfil">
         <i class="fas fa-user"></i>
         </a>
     </div>
 
     <div class="container">
-        <div class="contact-card">
+        <div class="cont-card">
             <h2>Criar Contato</h2>
             <form action="/diary/contact" method="post">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
@@ -18,8 +18,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="numCont">Telefone:</label>
-                    <input type="tel" name="number" id="numCont">
+                    <label for="phoneCont">Telefone:</label>
+                    <input type="tel" name="phone" id="phoneCont">
                 </div>
 
                 <div class="form-group">
