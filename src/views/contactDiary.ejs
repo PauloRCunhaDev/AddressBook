@@ -1,0 +1,39 @@
+<%- include('./includes/head')%>
+    <div class="navbar">
+        <div class="logo">Diary</div>
+        <a href="/diary/profile" class="profile-icon" title="Perfil">
+        <i class="fas fa-user"></i>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="contact-card">
+            <h2>Criar Contato</h2>
+            <form action="/diary/contact" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                <div class="form-group">
+                    <label for="nameCont">Nome:</label>
+                    <input type="text" name="name" id="nameCont">
+                </div>
+
+                <div class="form-group">
+                    <label for="numCont">Telefone:</label>
+                    <input type="tel" name="number" id="numCont">
+                </div>
+
+                <div class="form-group">
+                    <label for="emailCont">Email:</label>
+                    <input type="email" name="email" id="emailCont">
+                </div>
+
+                <%- include('./includes/messages')%>
+
+                <div class="button-wrapper">
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<%- include('./includes/footer')%>
