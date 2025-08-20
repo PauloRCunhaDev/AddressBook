@@ -6,14 +6,16 @@ const ContactSchema = new mongoose.Schema({
     name: { type: String, required: true },
     phone: { type: String, required: false, default: '-' },
     email: { type: String, required: false, default: '-' },
+    userCreat: { type: mongoose.Schema.Types.ObjectId, ref: 'Count' },
     date: { type: Date, default: Date.now }
 })
 
 const ContactModel = mongoose.model('Contact', ContactSchema)
 
 class Contact {
-    constructor(body) {
+    constructor(body, userId) {
         this.body = body
+        this.userId = userId
         this.errors = []
         this.contact = null
     }
@@ -46,15 +48,21 @@ class Contact {
         this.body = {
             name: this.body.name,
             phone: this.body.phone,
-            email: this.body.email
+            email: this.body.email,
+            userCreat: this.userId
         }
     }
 }
 
-Contact.findContacts = async function() {
-    const contacts = await ContactModel.find()
-        .sort({ date: -1 })
+Contact.findContacts = async function(userId) {
+    const contacts = await ContactModel.find({ userCreat: userId })
+        .sort({ date: 1 })
     return contacts
+}
+
+Contact.delete = async function(contactId) {
+    const contact = await ContactModel.findByIdAndDelete(contactId)
+    return contact
 }
 
 module.exports = Contact

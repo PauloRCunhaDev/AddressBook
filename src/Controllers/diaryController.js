@@ -1,8 +1,8 @@
 const Contact = require('../models/ContactModel')
-const Cotact = require('../models/ContactModel')
 
 exports.diaryPage = async(req, res) => {
-    const contacts = await Contact.findContacts()
+    const userId = req.session.user._id
+    const contacts = await Contact.findContacts(userId)
     res.render('indexDiary', { contacts })
 }
 

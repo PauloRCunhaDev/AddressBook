@@ -6,7 +6,7 @@ exports.contactPage = (req, res) => {
 
 exports.creatContact = async (req, res) => {
     try {
-        const contact = new Contact(req.body)
+        const contact = new Contact(req.body, req.session.user._id)
         await contact.register()
 
         if(contact.errors.length > 0) {
@@ -24,4 +24,11 @@ exports.creatContact = async (req, res) => {
     } catch (e) {
         console.log(e)
     }
+}
+
+exports.deleteContact = async (req, res) => {
+    const contact = await Contact.delete(req.params.id)
+    req.session.save(function() {
+        return res.redirect('/diary')
+    })
 }

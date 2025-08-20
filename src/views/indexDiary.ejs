@@ -16,6 +16,7 @@
                             <th>Nome</th>
                             <th>Telefone</th>
                             <th>Email</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,7 @@
                                 <td><%= contact.name %></td>
                                 <td><%= contact.phone %></td>
                                 <td><%= contact.email %></td>
+                                <td><a href="/diary/contact/<%= contact._id %>">Excluir</a></td>
                             </tr>
                         <% }) %>
                     </tbody>
